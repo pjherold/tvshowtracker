@@ -1,0 +1,29 @@
+body {
+	background-color: #e7e7e7;
+}
+
+.navbar-default {
+	background-color: #ffffff;
+}
+
+.container {
+	margin-left: 0px;
+	margin-right: 0px;
+	width: 100%;
+}
+
+.navbar-brand {
+	background-color: #ffd800;
+}
+
+.navbar-default .navbar-brand:hover {
+	background-color: #ffd800;
+}
+
+.nav navbar-nav {
+	font: 16px;
+}
+
+.nav>li {
+	font-size: larger;
+}
