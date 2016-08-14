@@ -1,13 +1,13 @@
-var gulp = require("gulp");
-var browserify = require("browserify");
-var reactify = require("reactify");
-var source = require("vinyl-source-stream");
+const gulp = require("gulp");
+const browserify = require("browserify");
+const source = require("vinyl-source-stream");
+const babelify = require("babelify");
 
 gulp.task("bundle", function () {
     return browserify({
         entries: "./app/main.jsx",
         debug: true
-    }).transform(reactify)
+    }).transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
         .pipe(source("main.js"))
         .pipe(gulp.dest("app/dist"))
