@@ -1,26 +1,46 @@
-const React = require("react");
+import React from 'react';
 import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap/lib';
+import { LinkContainer } from 'react-router-bootstrap';
+import Home from './Home.jsx';
 
-class App extends React.Component{
+export default React.createClass({
+	renderHome() {
+		if (this.props.children === null) {
+			return (
+				<Home />
+			);
+		}
+	},
+
     render() {
     	return (
-    		<Navbar>
-    			<Navbar.Header>
-      				<Navbar.Brand>
-        				<a>TVShowTracker</a>
-      				</Navbar.Brand>
-    			</Navbar.Header>
-    			<Nav>
-      				<NavItem eventKey={1} href="#">Home</NavItem>
-				    <NavItem eventKey={2} href="#">Add</NavItem>
-				</Nav>
-				<Nav pullRight>
-				    <NavItem eventKey={3} href="#">Login</NavItem>
-				    <NavItem eventKey={4} href="#">Sign Up</NavItem>
-			    </Nav>
-			 </Navbar>
+    		<div>
+	    		<Navbar>
+	    			<Navbar.Header>
+	      				<Navbar.Brand>
+	        				<a>TVShowTracker</a>
+	      				</Navbar.Brand>
+	    			</Navbar.Header>
+	    			<Nav>
+	    				<LinkContainer to="/">
+	      					<NavItem eventKey={1} href="#">Home</NavItem>
+	      				</LinkContainer>
+	      				<LinkContainer to="/add">
+					    	<NavItem eventKey={2} href="#">Add</NavItem>
+					    </LinkContainer>
+					</Nav>
+					<Nav pullRight>
+						<LinkContainer to="/login">
+					    	<NavItem eventKey={3} href="#">Login</NavItem>
+					    </LinkContainer>
+					    <LinkContainer to="/signup">	
+					    	<NavItem eventKey={4} href="#">Sign Up</NavItem>
+					    </LinkContainer>
+				    </Nav>
+				 </Navbar>
+				{this.props.children}
+				{this.renderHome()}
+			</div>
     	);
     }
-}
-
-module.exports = App;
+});

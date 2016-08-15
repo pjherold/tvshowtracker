@@ -6,6 +6,7 @@ const babelify = require("babelify");
 gulp.task("bundle", function () {
     return browserify({
         entries: "./app/main.jsx",
+        extensions : [".js"],
         debug: true
     }).transform(babelify, {presets: ["es2015", "react"]})
         .bundle()
