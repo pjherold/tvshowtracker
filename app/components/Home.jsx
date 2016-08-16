@@ -1,6 +1,8 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap/';
-import { Button, ButtonToolbar } from 'react-bootstrap/lib'
+import { Button, ButtonToolbar } from 'react-bootstrap/lib';
+//import { User } from '../../server/data/Models';
+
 
 const alphabet = ['0-9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
       'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X',
@@ -14,6 +16,17 @@ const genres = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy',
 
 export default React.createClass({
     render() {
+    	let data = 1;
+    	let parseJson = function (response) {
+    		return response.json();
+		};
+    	let url = 'http://api.tvmaze.com/shows/82';
+		fetch(url, {
+		    method: 'get',
+		    headers: {
+		        'Accept': 'application/json'
+		    }
+		}).then(parseJson).then((x) => console.log(x));
     	return (
     		<div>
     			<Jumbotron>
@@ -25,7 +38,7 @@ export default React.createClass({
 	                <ul className="genres">
 	                	<ButtonToolbar>
 	                		{genres.map((genre) =>
-	                			<Button btnStyle="info">{genre}</Button>
+	                			<Button key={genre} >{genre}</Button>
                 			)}
 	                	</ButtonToolbar>
 
