@@ -7,7 +7,7 @@ export default React.createClass({
 	renderHome() {
 		if (this.props.children === null) {
 			return (
-				<Home />
+				<Home shows={this.props.route.shows}/>
 			);
 		}
 	},
@@ -33,7 +33,7 @@ export default React.createClass({
 						<LinkContainer to="/login">
 					    	<NavItem eventKey={3} href="#">Login</NavItem>
 					    </LinkContainer>
-					    <LinkContainer to="/signup">	
+					    <LinkContainer to="/signup">
 					    	<NavItem eventKey={4} href="#">Sign Up</NavItem>
 					    </LinkContainer>
 				    </Nav>

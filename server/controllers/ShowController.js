@@ -1,8 +1,8 @@
-import mongoose from 'mongoose';
-import Show from '../data/Models';
-import _ from 'underscore';
+var mongoose = require("mongoose");
+var Show = require('../data/Models');
+var _ =  require('underscore');
 
-const router = require("express").Router();
+var router = require("express").Router();
 router.route("/shows/:id?").get(getShows).post(addShow);
 
 function getShows(request, response) {
