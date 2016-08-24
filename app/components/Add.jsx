@@ -2,12 +2,15 @@ import React from 'react';
 import { Navbar, FormGroup, FormControl, Button, Panel } from 'react-bootstrap/lib';
 import actions from "../actions/actions";
 
-export default React.createClass({
+class Add extends React.Component {
 	filterJSON(data) {
 		let newData = {};
 		const keys = ['id','name','language','genres','status','runtime', 'premiered', 'rating', 'network', 'image', 'summary']
 		for (let i in data) {
-			if (keys.indexOf(i) !== -1) {
+			if (i === 'image') {
+				newData[i] = data[i].medium;
+			}
+			else if (keys.indexOf(i) !== -1) {
 				newData[i] = data[i]
 			}
 		}
@@ -15,7 +18,7 @@ export default React.createClass({
 			actions.addShow(newData);
 			window.location.reload();
 		}
-	},
+	}
 
 	addShow(form) {
 		form.preventDefault();
@@ -27,9 +30,8 @@ export default React.createClass({
 		    headers: {
 		        'Accept': 'application/json'
 		    }
-		}).then(response => response.ok ? 
-							response.json() : {}).then((json) => this.filterJSON(json))
-	},
+		}).then(response => response.ok ? response.json() : {}).then((json) => this.filterJSON(json))
+	}
 
 	render() {
 		return (
@@ -54,4 +56,6 @@ export default React.createClass({
 			</div>
 		);
 	}
-})
+}
+
+export default Add;

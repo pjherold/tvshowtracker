@@ -3,14 +3,14 @@ import { Navbar, Nav, NavItem, MenuItem, NavDropdown } from 'react-bootstrap/lib
 import { LinkContainer } from 'react-router-bootstrap';
 import Home from './Home.jsx';
 
-export default React.createClass({
+class App extends React.Component {
 	renderHome() {
 		if (this.props.children === null) {
 			return (
 				<Home shows={this.props.route.shows}/>
 			);
 		}
-	},
+	}
 
     render() {
     	return (
@@ -43,4 +43,6 @@ export default React.createClass({
 			</div>
     	);
     }
-});
+}
+
+export default App;
