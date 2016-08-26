@@ -3,7 +3,13 @@ import { Navbar, FormGroup, FormControl, Button, Panel } from 'react-bootstrap/l
 import actions from "../actions/actions";
 
 class Add extends React.Component {
-	filterJSON(data) {
+	constructor(props) {
+		super(props);
+		this.addShow = this.addShow.bind(this);
+		this.updateDatabase = this.updateDatabase.bind(this);
+	}
+
+	updateDatabase(data) {
 		let newData = {};
 		const keys = ['id','name','language','genres','status','runtime', 'premiered', 'rating', 'network', 'image', 'summary']
 		for (let i in data) {
@@ -30,7 +36,7 @@ class Add extends React.Component {
 		    headers: {
 		        'Accept': 'application/json'
 		    }
-		}).then(response => response.ok ? response.json() : {}).then((json) => this.filterJSON(json))
+		}).then(response => response.ok ? response.json() : {}).then((json) => this.updateDatabase(json))
 	}
 
 	render() {

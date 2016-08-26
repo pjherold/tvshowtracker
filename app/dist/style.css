@@ -38,6 +38,29 @@ body {
 	background-color: #f4f6f8;
 }
 
+.displayshows {
+    background-color: grey;
+    margin: auto;
+    width: 80%;
+}
+
+.pageshows {
+    background-color: grey;
+    display: block;
+    margin: auto;
+    height: 1200px;
+    text-align: center;
+    width: 90%;
+}
+
+.showContainer {
+    background-color: white;
+    float: left;
+    height: 320px;
+    margin: 12px;
+    width: 210px;
+}
+
 .alphabet {
 	cursor: pointer;
     font-size: 22px;

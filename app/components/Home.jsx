@@ -1,6 +1,7 @@
 import React from 'react';
 import { Jumbotron } from 'react-bootstrap/';
-import { Button, ButtonToolbar, Grid, Col, Row } from 'react-bootstrap/lib';
+import { Button, ButtonToolbar } from 'react-bootstrap/lib';
+import ShowsDisplay from './ShowsDisplay.jsx';
 
 
 const alphabet = ['0-9', 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J',
@@ -16,7 +17,8 @@ const genres = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy',
 class Home extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { display: this.props.shows };
+        this.state = { filteredShows: this.props.shows };
+
         this.changeDisplayGenre = this.changeDisplayGenre.bind(this);
         this.changeDisplayChar = this.changeDisplayChar.bind(this);
     }
@@ -25,7 +27,7 @@ class Home extends React.Component{
         let newDisplay = this.props.shows.filter(
                     show => show.genres.indexOf(event.target.id) !== -1
                 );
-        this.setState({ display: newDisplay });
+        this.setState({ filteredShows: newDisplay });
     }
 
     changeDisplayChar(event) {
@@ -33,11 +35,7 @@ class Home extends React.Component{
                     show => show.name[0].toUpperCase() ===
                             event.target.id.toUpperCase()
                 );
-        this.setState({ display: newDisplay });
-    }
-
-    displayShows() {
-        return;
+        this.setState({ filteredShows: newDisplay });
     }
 
     render() {
@@ -59,10 +57,14 @@ class Home extends React.Component{
                   			)}
                     	</ButtonToolbar>
                     </ul>
-	           </Jumbotron>
-               {this.state.display.map((data) =>
-                  <img src={(data.image)} />
-                )}
+	            </Jumbotron>
+
+                <div className='displayshows'>
+                    <div className="search">
+
+                    </div>
+                    <ShowsDisplay shows={this.state.filteredShows} />
+               </div>
             </div>
     	);
     }
