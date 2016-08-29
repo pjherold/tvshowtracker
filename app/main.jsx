@@ -5,6 +5,7 @@ import App from "./components/App.jsx";
 import Add from "./components/Add.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
+import ShowPage from "./components/ShowPage.jsx";
 const Store = require("./stores/Store");
 const service = require("./services/Service");
 
@@ -14,8 +15,6 @@ let getShowsCallback = function(shows) {
 	render(_shows);
 }
 
-
-
 Store.onChange(getShowsCallback);
 
 function render(x=0) {
@@ -24,6 +23,7 @@ function render(x=0) {
 			<Route shows={x} path="/add" component={Add}/>
 			<Route shows={x} path="/login" component={Login}/>
 			<Route shows={x} path="/signup" component={Signup}/>
+			<Route path="/show/:showName" component={ShowPage}/>
 		</Route>
 	);
 	ReactDOM.render(

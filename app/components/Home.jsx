@@ -17,7 +17,7 @@ const genres = ['Action', 'Adventure', 'Animation', 'Children', 'Comedy',
 class Home extends React.Component{
     constructor(props) {
         super(props);
-        this.state = { filteredShows: this.props.shows };
+        this.state = { filteredShows: this.props.shows};
 
         this.changeDisplayGenre = this.changeDisplayGenre.bind(this);
         this.changeDisplayChar = this.changeDisplayChar.bind(this);
@@ -63,8 +63,9 @@ class Home extends React.Component{
                     <div className="search">
 
                     </div>
-                    <ShowsDisplay shows={this.state.filteredShows} />
-               </div>
+                    <ShowsDisplay shows={this.state.filteredShows}/>
+                </div>
+                <br/>
             </div>
     	);
     }
