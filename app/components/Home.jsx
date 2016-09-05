@@ -21,6 +21,7 @@ class Home extends React.Component{
 
         this.changeDisplayGenre = this.changeDisplayGenre.bind(this);
         this.changeDisplayChar = this.changeDisplayChar.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     changeDisplayGenre(event) {
@@ -36,6 +37,16 @@ class Home extends React.Component{
                             event.target.id.toUpperCase()
                 );
         this.setState({ filteredShows: newDisplay });
+    }
+
+    handleSearch(event) {
+        const search = event.target.value;
+        const stripSearch = search.replace(/[^A-Za-z0-9]/g, '').toLowerCase();
+        const len = stripSearch.length;
+        this.setState({ filteredShows: this.props.shows.filter(show =>
+                stripSearch === show.name.replace(/[^A-Za-z0-9]/g, '')
+                                .toLowerCase().substring(0, len)
+            ) });
     }
 
     render() {
@@ -60,10 +71,14 @@ class Home extends React.Component{
 	            </Jumbotron>
 
                 <div className='displayshows'>
-                    <div className="search">
-
+                    <div className="searchContainer">
+                        <div className="search">
+                            <input type="text" onChange={this.handleSearch}/>
+                        </div>
                     </div>
+                    <div>
                     <ShowsDisplay shows={this.state.filteredShows}/>
+                    </div>
                 </div>
                 <br/>
             </div>

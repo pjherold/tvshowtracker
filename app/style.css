@@ -36,6 +36,8 @@ body {
 
 .jumbotron {
 	background-color: #f4f6f8;
+    margin: auto;
+    width: 85%;
 }
 
 .displayshows {
@@ -51,6 +53,17 @@ body {
     margin: auto;
     text-align: center;
     width: 90%;
+}
+
+.searchContainer {
+    height: 31px;
+    padding-top: 5px;
+    padding-right: 5px;
+    width: 100%;
+}
+
+.search {
+    float: right;
 }
 
 .showContainer {
@@ -126,4 +139,10 @@ body {
 .addHelp {
     margin: auto;
     text-align: center;
+}
+
+.pageInfo {
+    height: 30px;
+    float: right;
+    width: 200px;
 }

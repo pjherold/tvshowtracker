@@ -81,21 +81,25 @@ class ShowsDisplay extends React.Component {
 		const numRows = Object.keys(showRows).length;
 		return (
 			<div className="pageshows" style={{height: numRows * 345 + 42 }}>
-	           {Object.keys(showRows).sort().map(row =>
-	           	  <div className="Row">
-	           	  	{showRows[row].map(data =>
-	           	  		<Link to={"/show/"+data.id}>
-		           	  	  <div className='showContainer'>
-			                <img src={(data.image)} />
-			                {data.name} {data.rating.average}
-			              </div>
-			            </Link>
-	           	  	)}
-	              </div>
-	            )}
-	            {this.state.page}
-	            {this.renderBackButton()}
-	            {this.renderNextButton()}
+				<div>
+		           {Object.keys(showRows).sort().map(row =>
+		           	  <div className="Row">
+		           	  	{showRows[row].map(data =>
+		           	  		<Link to={"/show/"+data.id}>
+			           	  	  <div className='showContainer'>
+				                <img src={(data.image)} />
+				                {data.name} {data.rating.average}
+				              </div>
+				            </Link>
+		           	  	)}
+		              </div>
+		            )}
+		        </div>
+		        <div className="pageInfo">
+		            {this.state.page}
+		            {this.renderBackButton()}
+		            {this.renderNextButton()}
+		        </div>
 		    </div>
 		);
 	}
