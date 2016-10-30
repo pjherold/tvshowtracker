@@ -23,7 +23,7 @@ function render(x=0) {
 			<Route shows={x} path="/add" component={Add}/>
 			<Route shows={x} path="/login" component={Login}/>
 			<Route shows={x} path="/signup" component={Signup}/>
-			<Route path="/show/:showName" component={ShowPage}/>
+			<Route shows={x} path="/show/:showName" component={ShowPage}/>
 		</Route>
 	);
 	ReactDOM.render(
