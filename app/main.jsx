@@ -6,31 +6,58 @@ import Add from "./components/Add.jsx";
 import Login from "./components/Login.jsx";
 import Signup from "./components/Signup.jsx";
 import ShowPage from "./components/ShowPage.jsx";
-const Store = require("./stores/Store");
-const service = require("./services/Service");
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
+import createLogger from "redux-logger";
+import { RootReducer, addShowtoDatabaseReducer } from './reducers/RootReducer';
+import request from 'ajax-request';
 
-let _shows = [];
-let getShowsCallback = function(shows) {
-	_shows = shows;
-	render(_shows);
+let initialState = {
+	ShowDatabase: {
+		shows: [],
+		showIDs: []
+	}
+};
+request({
+	url: '/api/shows',
+	method: 'GET',
+},
+(err, res, data) => {
+	if (err) {
+		console.log(err)
+	} else {
+		let shows = JSON.parse(data);
+		shows.forEach((show) => {
+			initialState.ShowDatabase.showIDs.push(show.id);
+		})
+		initialState.ShowDatabase.shows = shows;
+	}
+	start();
+});
+
+let start = () => {
+	let logger = createLogger();
+	const store = createStore(RootReducer, initialState, applyMiddleware(thunk, logger));
+	render(store);
 }
 
-Store.onChange(getShowsCallback);
 
-function render(x=0) {
+
+function render(store) {
 	const routes = (
-		<Route shows={x} path="/" component={App}>
-			<Route shows={x} path="/add" component={Add}/>
-			<Route shows={x} path="/login" component={Login}/>
-			<Route shows={x} path="/signup" component={Signup}/>
-			<Route shows={x} path="/show/:showName" component={ShowPage}/>
+		<Route path="/" component={App}>
+			<Route path="/add" component={Add}/>
+			<Route path="/login" component={Login}/>
+			<Route path="/signup" component={Signup}/>
+			<Route path="/show/:showName" component={ShowPage}/>
 		</Route>
 	);
 	ReactDOM.render(
-		<Router history={hashHistory}>
+		<Provider store={store}>
+			<Router history={hashHistory}>
     		{ routes }
   		</Router>
+		</Provider>
 		, document.getElementById("app"));
 }
-
-service.getShows().then(x => render(x));

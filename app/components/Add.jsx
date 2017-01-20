@@ -1,6 +1,8 @@
 import React from 'react';
 import { Navbar, FormGroup, FormControl, Button, Panel } from 'react-bootstrap/lib';
-import actions from "../actions/actions";
+import { connect } from 'react-redux'
+import { addShowDatabase } from '../actions/addShow';
+
 
 class Add extends React.Component {
 	constructor(props) {
@@ -21,8 +23,7 @@ class Add extends React.Component {
 			}
 		}
 		if (Object.keys(newData).length > 0) {
-			actions.addShow(newData);
-			window.location.reload();
+			this.props.addShowDatabase(newData);
 		}
 	}
 
@@ -63,5 +64,20 @@ class Add extends React.Component {
 		);
 	}
 }
+
+const mapStateToProps = (state) => {
+  return {
+  	state: state
+  }
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addShowDatabase: (show) => {
+      dispatch(addShowDatabase(show))
+    }
+  }
+}
+Add = connect(mapStateToProps, mapDispatchToProps)(Add);
+
 
 export default Add;

@@ -58,7 +58,7 @@ class ShowsDisplay extends React.Component {
     renderBackButton() {
         if (this.state.page > 1) {
             return (
-                <Button onClick={this.decrementPage}> 
+                <Button onClick={this.decrementPage}>
                   Previous Page
                 </Button>
             );
@@ -68,7 +68,7 @@ class ShowsDisplay extends React.Component {
     renderNextButton() {
     	if (this.getPageShows(this.state.page + 1).length > 0) {
     		return (
-                <Button onClick={this.incrementPage}> 
+                <Button onClick={this.incrementPage}>
                   Next Page
                 </Button>
             );
@@ -82,10 +82,10 @@ class ShowsDisplay extends React.Component {
 		return (
 			<div className="pageshows" style={{height: numRows * 345 + 42 }}>
 				<div>
-		           {Object.keys(showRows).sort().map(row =>
-		           	  <div className="Row">
-		           	  	{showRows[row].map(data =>
-		           	  		<Link to={"/show/"+data.id}>
+		           {Object.keys(showRows).sort().map((row, index) =>
+		           	  <div key={index} className="Row">
+		           	  	{showRows[row].map((data, index) =>
+		           	  		<Link key={index} to={"/show/"+data.id}>
 			           	  	  <div className='showContainer'>
 				                <img src={(data.image)} />
 				                {data.name} {data.rating.average}
