@@ -18,28 +18,26 @@ class App extends React.Component {
 
   render() {
   	return (
-  		<div>
+  		<div className="abs">
     		<Navbar>
     			<Navbar.Header>
-      				<Navbar.Brand>
-        				<a>TVShowTracker</a>
-      				</Navbar.Brand>
+    				<Navbar.Brand>
+      				<a>TVShowTracker</a>
+    				</Navbar.Brand>
     			</Navbar.Header>
     			<Nav>
     				<LinkContainer to="/">
-      					<NavItem eventKey={1} href="#">Home</NavItem>
-      				</LinkContainer>
-      				<LinkContainer to="/add">
-				    	<NavItem eventKey={2} href="#">Add</NavItem>
-				    </LinkContainer>
+      				<NavItem eventKey={1} href="#">Home</NavItem>
+      			</LinkContainer>
+    				<LinkContainer to="/add">
+			    		<NavItem eventKey={2} href="#">Add</NavItem>
+			    	</LinkContainer>
 				</Nav>
 				<Nav pullRight>
 					<LinkContainer to="/login">
-				    	<NavItem eventKey={3} href="#">Login</NavItem>
-				    </LinkContainer>
-				    <LinkContainer to="/signup">
-				    	<NavItem eventKey={4} href="#">Sign Up</NavItem>
-				    </LinkContainer>
+				    <NavItem eventKey={3} href="#">Login/Sign Up</NavItem>
+				  </LinkContainer>
+				  
 			    </Nav>
 			 </Navbar>
 			{this.props.children}

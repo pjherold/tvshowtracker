@@ -70,7 +70,7 @@ class Home extends React.Component{
                     </ul>
 	            </Jumbotron>
 
-                <div className='displayshows'>
+                <div className='displayshows' style={{ minWidth: 781 }}>
                     <div className="searchContainer">
                         <div className="search">
                             <input type="text" onChange={this.handleSearch}/>

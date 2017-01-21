@@ -80,7 +80,7 @@ class ShowsDisplay extends React.Component {
 		const showRows = this.getShowRows(shows);
 		const numRows = Object.keys(showRows).length;
 		return (
-			<div className="pageshows" style={{height: numRows * 345 + 42 }}>
+			<div className="pageshows" style={{height: numRows * 345 + 42}}>
 				<div>
 		           {Object.keys(showRows).sort().map((row, index) =>
 		           	  <div key={index} className="Row">

@@ -3,9 +3,8 @@ import ReactDOM from "react-dom"
 import { Router, Route, hashHistory } from 'react-router'
 import App from "./components/App.jsx";
 import Add from "./components/Add.jsx";
-import Login from "./components/Login.jsx";
-import Signup from "./components/Signup.jsx";
 import ShowPage from "./components/ShowPage.jsx";
+import UserAuthen from "./components/UserAuthen.jsx";
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
@@ -48,8 +47,7 @@ function render(store) {
 	const routes = (
 		<Route path="/" component={App}>
 			<Route path="/add" component={Add}/>
-			<Route path="/login" component={Login}/>
-			<Route path="/signup" component={Signup}/>
+			<Route path="/login" component={UserAuthen}/>
 			<Route path="/show/:showName" component={ShowPage}/>
 		</Route>
 	);
