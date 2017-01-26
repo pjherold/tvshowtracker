@@ -1,5 +1,5 @@
 var mongoose = require("mongoose");
-var Shows = require('../Models');
+var Shows = require('../Models').Shows;
 var _ =  require('underscore');
 
 const KEY = '85d5492a57cd182c84783715cdb18428d855e1';

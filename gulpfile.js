@@ -15,10 +15,10 @@ gulp.task("bundle", function () {
 });
 
 gulp.task("copy", ["bundle"], function () {
-    return gulp.src(["app/index.html","app/lib/bootstrap-css/css/bootstrap.min.css","app/style.css"])
+    return gulp.src(["app/index.ejs","app/lib/bootstrap-css/css/bootstrap.min.css","app/style.css"])
         .pipe(gulp.dest("app/dist"));
 });
 
-gulp.task("default",["copy"],function(){
-   console.log("Gulp completed..."); 
+gulp.task("default",["copy"], function(){
+   console.log("Gulp completed...");
 });

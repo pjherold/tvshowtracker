@@ -176,7 +176,7 @@ body {
     margin: 0 auto;
 }
 
-input, textarea {
+input:not(#searchShows), textarea {
     font-size: 22px;
     display: block;
     width: 100%;

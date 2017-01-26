@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, FormGroup, FormControl, Button, Panel } from 'react-bootstrap/lib';
 import { connect } from 'react-redux'
-import { addShowDatabase } from '../actions/addShow';
+import { addShowDatabase } from '../actions/addShowDatabase';
 
 
 class Add extends React.Component {

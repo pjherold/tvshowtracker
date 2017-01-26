@@ -6,38 +6,32 @@ class Signup extends React.Component {
 			<div>
         <br/>
         <br/>
-        <form>
+        <form action="signup" method="post">
 
           <div className="top-row">
             <div id="firstname" className="field-wrap">
-              <input type="text" placeholder="First Name" required="" autocomplete="off"/>
+              <input type="text" name="firstname" placeholder="First Name" required="" autocComplete="off"/>
             </div>
 
             <div id="lastname" className="field-wrap">
-              <input type="text" placeholder="Last Name" required="" autocomplete="off"/>
+              <input type="text" name="lastname" placeholder="Last Name" required="" autocComplete="off"/>
             </div>
           </div>
 
           <br/>
           <br/>
+
           <div className="field-wrap">
-            <input type="text" placeholder="Username" required="" autocomplete="off"/>
+            <input type="email" name="email" placeholder="Email Address" required="" autocComplete="off"/>
           </div>
 
           <br/>
 
           <div className="field-wrap">
-            <input type="email" placeholder="Email Address" required="" autocomplete="off"/>
+            <input type="password" name="password" placeholder="Set A Password" required="" autoComplete="off"/>
           </div>
 
           <br/>
-
-          <div className="field-wrap">
-            <input type="password" placeholder="Set A Password" required="" autocomplete="off"/>
-          </div>
-
-          <br/>
-
           <button type="submit" className="button button-block">Get Started</button>
 
         </form>

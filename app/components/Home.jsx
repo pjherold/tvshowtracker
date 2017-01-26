@@ -53,35 +53,34 @@ class Home extends React.Component{
     	return (
     		<div>
     			<Jumbotron>
-                    <ul className="alphabet">
-                    	{alphabet.map((char) =>
-                    		<li onClick={this.changeDisplayChar}
-                                key={char} id={char}> {char} </li>
-                    	)}
-                    </ul>
-                    <ul className="genres">
-                    	<ButtonToolbar>
-                    		{genres.map((genre) =>
-                    			<Button onClick={this.changeDisplayGenre}
-                                        key={genre} id={genre}>{genre}
-                                </Button>
-                  			)}
-                    	</ButtonToolbar>
-                    </ul>
-	            </Jumbotron>
-
-                <div className='displayshows' style={{ minWidth: 781 }}>
-                    <div className="searchContainer">
-                        <div className="search">
-                            <input type="text" onChange={this.handleSearch}/>
-                        </div>
-                    </div>
-                    <div>
-                    <ShowsDisplay shows={this.state.filteredShows}/>
-                    </div>
-                </div>
-                <br/>
+            <ul className="alphabet">
+            	{alphabet.map((char) =>
+            		<li onClick={this.changeDisplayChar}
+                        key={char} id={char}> {char} </li>
+            	)}
+            </ul>
+            <ul className="genres">
+            	<ButtonToolbar>
+            		{genres.map((genre) =>
+            			<Button onClick={this.changeDisplayGenre}
+                                key={genre} id={genre}>{genre}
+                  </Button>
+          			)}
+            	</ButtonToolbar>
+            </ul>
+          </Jumbotron>
+          <div className='displayshows' style={{ minWidth: 781 }}>
+            <div className="searchContainer">
+              <div className="search">
+                <input id="searchShows" type="text" onChange={this.handleSearch}/>
+              </div>
             </div>
+            <div>
+              <ShowsDisplay shows={this.state.filteredShows}/>
+            </div>
+          </div>
+          <br/>
+        </div>
     	);
     }
 }

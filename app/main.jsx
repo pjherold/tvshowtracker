@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom"
-import { Router, Route, hashHistory } from 'react-router'
+import { Router, Route, hashHistory, browserHistory } from 'react-router'
 import App from "./components/App.jsx";
 import Add from "./components/Add.jsx";
 import ShowPage from "./components/ShowPage.jsx";
@@ -16,32 +16,46 @@ let initialState = {
 	ShowDatabase: {
 		shows: [],
 		showIDs: []
+	},
+	UserData: {
+		loggedIn: false,
+		name: null,
+		email: null,
+		shows: [],
+		showIDs: []
 	}
 };
 request({
 	url: '/api/shows',
 	method: 'GET',
 },
-(err, res, data) => {
-	if (err) {
-		console.log(err)
-	} else {
+	(err, res, data) => {
+		if (err) {
+			return console.log(err)
+		}
 		let shows = JSON.parse(data);
 		shows.forEach((show) => {
 			initialState.ShowDatabase.showIDs.push(show.id);
 		})
 		initialState.ShowDatabase.shows = shows;
+		if (Object.keys(__USER).length > 0) {
+			initialState.UserData.loggedIn = true;
+			initialState.UserData.name = __USER.name;
+			initialState.UserData.email = __USER.email;
+			initialState.UserData.shows = __USER.shows;
+			initialState.UserData.showIDs = __USER.showIDs;
+		}
+		console.log(JSON.stringify(initialState.UserData))
+		start();
 	}
-	start();
-});
+);
+
 
 let start = () => {
 	let logger = createLogger();
 	const store = createStore(RootReducer, initialState, applyMiddleware(thunk, logger));
 	render(store);
 }
-
-
 
 function render(store) {
 	const routes = (
@@ -53,7 +67,7 @@ function render(store) {
 	);
 	ReactDOM.render(
 		<Provider store={store}>
-			<Router history={hashHistory}>
+			<Router history={browserHistory}>
     		{ routes }
   		</Router>
 		</Provider>
