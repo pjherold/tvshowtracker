@@ -43,6 +43,11 @@ app.post('/login', passport.authenticate('local-login', {
   failureFlash : true
 }));
 
+app.get('/logout', function(req, res){
+  console.log(223324);
+  req.logout();
+  res.redirect('/');
+});
 
 app.get('*', (req, res) => {
 	let data = {};

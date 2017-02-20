@@ -3,6 +3,7 @@ import ReactDOM from "react-dom"
 import { Router, Route, hashHistory, browserHistory } from 'react-router'
 import App from "./components/App.jsx";
 import Add from "./components/Add.jsx";
+import Profile from "./components/Profile.jsx";
 import ShowPage from "./components/ShowPage.jsx";
 import UserAuthen from "./components/UserAuthen.jsx";
 import { Provider } from 'react-redux';
@@ -45,7 +46,6 @@ request({
 			initialState.UserData.shows = __USER.shows;
 			initialState.UserData.showIDs = __USER.showIDs;
 		}
-		console.log(JSON.stringify(initialState.UserData))
 		start();
 	}
 );
@@ -63,6 +63,9 @@ function render(store) {
 			<Route path="/add" component={Add}/>
 			<Route path="/login" component={UserAuthen}/>
 			<Route path="/show/:showName" component={ShowPage}/>
+			<Route path="/profile" component={Profile}/>
+			<Route path="/logout"/>
+
 		</Route>
 	);
 	ReactDOM.render(
